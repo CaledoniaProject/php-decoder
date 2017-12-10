@@ -16,9 +16,14 @@ diff -ur php-5.5.38/Zend/zend_language_scanner.c ../php-5.5.38/Zend/zend_languag
 +		FILE *fp = fopen(out_filename, "wb");
 +		if (fp != NULL)
 +		{
++           fprintf(stderr, "Wrote %s\n", out_filename);
 +			fwrite(Z_STRVAL_P(source_string), sizeof(char), Z_STRLEN_P(source_string), fp);
 +			fclose(fp);
 +		}
++       else 
++       {
++           perror("fopen");
++       }
 +	}
 +
  	zend_lex_state original_lex_state;
