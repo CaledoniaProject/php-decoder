@@ -12,7 +12,9 @@
 
 ### 解密代码
 
-这个程序会把所有动态 `eval/assert/create_function/...` 执行的内容直接显示在
+这个程序会把所有动态 `eval/assert/create_function/...` 执行的内容直接保存在文件里
+
+在命令行里，
 
 ```
 ./sapi/cli/php xxx.php
