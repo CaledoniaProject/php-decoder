@@ -1,0 +1,26 @@
+diff -ur php-5.5.38/Zend/zend_language_scanner.c ../php-5.5.38/Zend/zend_language_scanner.c
+--- php-5.5.38/Zend/zend_language_scanner.c	2016-07-20 16:41:48.000000000 +0800
++++ ../php-5.5.38/Zend/zend_language_scanner.c	2017-12-10 23:39:03.000000000 +0800
+@@ -722,9 +722,22 @@
+ 	return offset;
+ }
+ 
++int _file_no = 1;
+ 
+ zend_op_array *compile_string(zval *source_string, char *filename TSRMLS_DC)
+ {
++	{
++		char out_filename[256];
++		snprintf(out_filename, sizeof(out_filename), "compile.%d.txt", _file_no ++);
++
++		FILE *fp = fopen(out_filename, "wb");
++		if (fp != NULL)
++		{
++			fwrite(Z_STRVAL_P(source_string), sizeof(char), Z_STRLEN_P(source_string), fp);
++			fclose(fp);
++		}
++	}
++
+ 	zend_lex_state original_lex_state;
+ 	zend_op_array *op_array = (zend_op_array *) emalloc(sizeof(zend_op_array));
+ 	zend_op_array *original_active_op_array = CG(active_op_array);
