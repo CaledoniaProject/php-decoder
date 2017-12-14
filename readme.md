@@ -7,7 +7,7 @@
 下载 `php-5.5.38` 源代码，打上补丁。开启需要的扩展，编译即可
 
 ```
-./configure --prefix=/tmp/php-decoder --disable-cgi --disable-fpm -q && make -j8
+./configure --prefix=/tmp/php-decoder --disable-cgi --disable-fpm --with-zlib -q && make -j8
 ```
 
 ### 解密代码
