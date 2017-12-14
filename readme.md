@@ -4,7 +4,7 @@
 
 ### 编译
 
-下载 `php-5.5.38` 源代码，打上补丁。不需要考虑可能需要的扩展，e.g mysqli 等等，直接编译即可
+下载 `php-5.5.38` 源代码，打上补丁。开启需要的扩展，编译即可
 
 ```
 ./configure --prefix=/tmp/php-decoder --disable-cgi --disable-fpm -q && make -j8
